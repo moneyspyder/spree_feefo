@@ -7,9 +7,9 @@ Gem::Specification.new do |s|
   s.description = 'This extension adds a feefo product feed and includes libraries for displaying spree logos'
   s.required_ruby_version = '>= 2.0.0'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Christopher Reeve'
+  s.email     = 'support@moneyspyder.co.uk'
+  s.homepage  = 'http://moneyspyder.co.uk'
 
   #s.files       = `git ls-files`.split("\n")
   #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
