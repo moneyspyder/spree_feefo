@@ -1,5 +1,5 @@
 
-class Feefo < ActiveRecord::Base
+class Feefo
 
   require Rails.root.join('app', 'helpers', 'application_helper')
   include ApplicationHelper
@@ -12,12 +12,12 @@ class Feefo < ActiveRecord::Base
     start_date ||= Time.zone.now.beginning_of_day - 1.months
     end_date ||= Time.zone.now.beginning_of_day
 
-    tmp_path = "#{ Rails.root }/" + Spree::Config[:feefo_tmp_feed_location].to_s + "/"
-    end_path = "#{ Rails.root }/public" + Spree::Config[:feefo_public_feed_location].to_s + "/"
+    tmp_path = File.join(Rails.root, Spree::Config[:feefo_tmp_feed_location].to_s)
+    end_path = File.join(Rails.root, 'public', Spree::Config[:feefo_public_feed_location].to_s)
     FileUtils.mkdir_p(tmp_path)
     FileUtils.mkdir_p(end_path)
-    tmp_filepath = tmp_path + Spree::Config[:feefo_feed_name]
-    end_filepath = end_path + Spree::Config[:feefo_feed_name]
+    tmp_filepath = File.join(tmp_path, Spree::Config[:feefo_feed_name])
+    end_filepath = File.join(end_path, Spree::Config[:feefo_feed_name])
 
     CSV.open(tmp_filepath, "w", {col_sep: "\t", encoding: "UTF-8"}) do |file|
       file << [
