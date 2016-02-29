@@ -9,6 +9,7 @@ class Feefo
 
 
   def self.generate_feed(start_date = nil, end_date = nil)
+
     start_date ||= Time.zone.now.beginning_of_day - 1.months
     end_date ||= Time.zone.now.beginning_of_day
 
@@ -56,7 +57,7 @@ class Feefo
       end
 
     end
-
+    puts end_filepath
     FileUtils.cp tmp_filepath, end_filepath
 
   end

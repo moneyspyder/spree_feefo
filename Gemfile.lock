@@ -151,6 +151,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -208,6 +209,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -236,6 +238,10 @@ GEM
     premailer-rails (1.9.0)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rabl (0.11.8)
       activesupport (>= 2.3.14)
     rack (1.6.4)
@@ -312,6 +318,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     sixarm_ruby_unaccent (1.1.1)
+    slop (3.6.0)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -359,6 +366,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl (~> 4.5)
   ffaker
+  pry
   rspec-rails (~> 3.1)
   sass-rails (~> 5.0.0.beta1)
   selenium-webdriver
