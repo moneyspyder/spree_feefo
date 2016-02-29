@@ -12,14 +12,17 @@ namespace :spree_feefo do
       include CsvTools
 
       start_date = Time.zone.now.beginning_of_day - 1.months
-      end_date = Time.zone.now.beginning_of_day + 1.day
+      end_date = Time.zone.now.beginning_of_day
 
-      path = "#{ Rails.root }" + Rails.application.config.feefo_feed_location
-      FileUtils.mkdir_p(path)
-      filepath = path + Rails.application.config.feefo_feed_name
+      tmp_path = "#{ Rails.root }" + Rails.application.config.feefo_tmp_feed_location
+      end_path = "#{ Rails.root }" + Rails.application.config.feefo_end_feed_location
+      FileUtils.mkdir_p(tmp_path)
+      FileUtils.mkdir_p(end_path)
+      tmp_filepath = tmp_path + Rails.application.config.feefo_feed_name
+      end_filepath = end_path + Rails.application.config.feefo_feed_name
 
 
-      File.open(filepath, "w:UTF-8") do |file|
+      File.open(tmp_filepath, "w:UTF-8") do |file|
         file.write("\xEF\xBB\xBF")
         file.puts(
           CsvTools.tab_line(
@@ -59,6 +62,9 @@ namespace :spree_feefo do
             )
           ) if shipment.present? && shipment.order.email.present?
         end
+
+        file.close
+        FileUtils.cp tmp_filepath, end_filepath
 
       end
     end
