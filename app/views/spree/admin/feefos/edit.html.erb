@@ -1,0 +1,56 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:feefo_settings) %>
+<% end %>
+
+<div id="preferences" data-hook>
+  <fieldset class="general no-border-top">
+    <%= form_tag admin_feefo_path, method: :put do |f| %>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group" data-hook="admin_feefo_feefo_input_logon">
+            <%= label_tag :feefo_logon %>
+            <%= text_field_tag :feefo_logon, Spree::Config[:feefo_logon], class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group" data-hook="admin_feefo_input_feefo_feed_name">
+            <%= label_tag :feefo_feed_name %>
+            <%= text_field_tag :feefo_feed_name, Spree::Config[:feefo_feed_name], class: 'form-control'  %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group" data-hook="admin_feefo_feefo_input_logon">
+            <%= label_tag :feefo_tmp_feed_location %>
+            <%= text_field_tag :feefo_tmp_feed_location,
+                Spree::Config[:feefo_tmp_feed_location],
+                class: 'form-control'
+            %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group" data-hook="admin_feefo_input_feefo_feed_name">
+            <%= label_tag :feefo_public_feed_location %>
+            <%= text_field_tag :feefo_public_feed_location,
+                Spree::Config[:feefo_public_feed_location],
+                class: 'form-control'
+            %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions" data-hook="buttons">
+        <%= button Spree.t('actions.update'), 'save' %>
+        <span class="or"><%= Spree.t(:or) %></span>
+        <%= button_link_to  Spree.t('actions.cancel'), 
+                            edit_admin_general_settings_url, icon: 'delete' 
+        %>
+      </div>
+    <% end %>
+  </fieldsset>
+</div>
