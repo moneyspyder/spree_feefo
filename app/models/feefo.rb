@@ -57,8 +57,8 @@ class Feefo
       end
 
     end
-    puts end_filepath
-    FileUtils.cp tmp_filepath, end_filepath
 
+    FileUtils.cp tmp_filepath, end_filepath
+    puts end_filepath
   end
 end
