@@ -49,8 +49,7 @@ class Feefo
           '',
           shipment.manifest.first.line_item.variant.sku,
           shipment.order.number,
-          # Rails.application.routes.url_helpers.spree.product_path(shipment.manifest.first.line_item.product),
-          logon+"/products/#{ shipment.manifest.first.line_item.product.slug }",  # TODO: Do this properly!
+          Spree::Core::Engine.routes.url_helpers.products_url(Spree::Product.last, host: Spree::Store.default.url),
           shipment.order.user ? shipment.order.user.id : '',
           shipment.order.total.to_f
         ] if shipment.present? && shipment.order.email.present?
