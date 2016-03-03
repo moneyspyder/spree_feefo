@@ -36,7 +36,7 @@ class Feefo
         'amount'
       ]
 
-      logon = Spree::Config[:feefo_logon]
+      logon = Spree::Config[:feefo_merchant_identifier]
 
        Spree::Shipment.where(state: "shipped", shipped_at: start_date..end_date).each do |shipment|
         file << [

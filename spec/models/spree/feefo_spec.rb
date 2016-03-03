@@ -4,7 +4,7 @@ require 'csv'
 RSpec.describe Spree::Feefo, type: :model do
 
   before(:each) do
-    Spree::Config[:feefo_logon] = 'www.example_logon.com'
+    Spree::Config[:feefo_merchant_identifier] = 'www.example_logon.com'
     Spree::Config[:feefo_feed_name] = 'test_feefo_feed.csv'
     Spree::Config[:feefo_tmp_feed_location] = 'tmp'
     Spree::Config[:feefo_public_feed_location] = ''
