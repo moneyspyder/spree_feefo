@@ -47,7 +47,7 @@ class Feefo
           logon,
           shipment.manifest.first.line_item.product.taxons.order(:lft).first.try(:name).to_s,
           '',
-          shipment.manifest.first.line_item.variant.sku,
+          shipment.manifest.first.line_item.product.sku,
           shipment.order.number,
           Spree::Core::Engine.routes.url_helpers.products_url(Spree::Product.last, host: Spree::Store.default.url),
           shipment.order.user ? shipment.order.user.id : '',
