@@ -22,18 +22,18 @@ class Feefo
 
     CSV.open(tmp_filepath, "w", {col_sep: "\t", encoding: "UTF-8"}) do |file|
       file << [
-        'Name',
-        'Email',
-        'Date',
-        'Description',
-        'Logon',
-        'Category',
-        'Feedback Date',
-        'Product search code',
-        'Order Ref',
-        'Product link',
-        'Customer Ref',
-        'Amount'
+        'name',
+        'email',
+        'date',
+        'description',
+        'merchant identifier',
+        'category',
+        'feedback fate',
+        'product search code',
+        'order Ref',
+        'product link',
+        'customer Ref',
+        'amount'
       ]
 
       logon = Spree::Config[:feefo_logon]
