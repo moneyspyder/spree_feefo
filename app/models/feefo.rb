@@ -7,7 +7,6 @@ class Feefo
   require 'csv'
 
 
-
   def self.generate_feed(start_date = nil, end_date = nil)
 
     start_date ||= Time.zone.now.beginning_of_day - 1.months
