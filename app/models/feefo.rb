@@ -48,7 +48,7 @@ class Feefo
           '',
           shipment.manifest.first.line_item.product.sku,
           shipment.order.number,
-          Spree::Core::Engine.routes.url_helpers.products_url(Spree::Product.last, host: Spree::Store.default.url),
+          Spree::Core::Engine.routes.url_helpers.product_url(shipment.manifest.first.line_item.product, host: Spree::Store.default.url),
           shipment.order.user ? shipment.order.user.id : '',
           shipment.order.total.to_f
         ] if shipment.present? && shipment.order.email.present?
