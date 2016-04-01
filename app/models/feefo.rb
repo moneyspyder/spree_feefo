@@ -38,6 +38,9 @@ class Feefo
       logon = Spree::Config[:feefo_merchant_identifier]
 
        Spree::Shipment.where(state: "shipped", shipped_at: start_date..end_date).each do |shipment|
+        sku = shipment.manifest.first.line_item.product.sku
+        sku = shipment.manifest.first.line_item.product.variants.first.try(:sku) if sku.blank?
+
         file << [
           shipment.order.name,
           shipment.order.email,
@@ -46,7 +49,7 @@ class Feefo
           logon,
           shipment.manifest.first.line_item.product.taxons.order(:lft).first.try(:name).to_s,
           '',
-          shipment.manifest.first.line_item.product.sku,
+          sku,
           shipment.order.number,
           Spree::Core::Engine.routes.url_helpers.product_url(shipment.manifest.first.line_item.product, host: Spree::Store.default.url),
           shipment.order.user ? shipment.order.user.id : '',
